@@ -2,6 +2,9 @@ import client from './axiosClient';
 import axios from "axios";
 
 // client(url,param,method)
+/*
+  Developer : Sarika
+*/ 
 
 export const putRequest = (url, data, notificationConf) => client({
   method: 'put',
@@ -24,21 +27,6 @@ export const getRequest = (url, isShowLoading, notificationConf) => client({
   customparams: { showLoading: isShowLoading, notificationConf }
 });
 
-
-export const getRequest1 = (url,type) =>{ 
-     return axios.get(url)  
-        .then(response => {
-                            
-              return {
-                type:type,
-                payload:response.data
-              }
-          })
-        .catch((error) => {
-          console.log("error");    
-        })
-};
-
 export const deleteRequest = (url, notificationConf) => client({
   method: 'delete',
   url,
@@ -52,3 +40,9 @@ export const patchRequest = (url, data, notificationConf) => client({
   data,
   customparams: { showLoading: true, notificationConf },
 });
+
+
+
+
+
+

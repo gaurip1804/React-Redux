@@ -1,12 +1,14 @@
 import {
-  getRequest, putRequest, postRequest, deleteRequest, patchRequest, getRequest1
+  getRequest, putRequest, postRequest, deleteRequest, patchRequest, 
 } from './axiosUtility';
 import { SUCCESS_MESSAGE, ERROR_MESSAGE } from '../constants';
 
+import { getRequest1 } from './action';
+
+/*
+  Developer : Sarika
+*/
 export const GetRequest = (url, header) => getRequest(url);
-
-export const GetAllEntitiesData = (url, header, type) =>getRequest1(url,type);
-
 
 export const PutRequest = (url, data,header) => putRequest(url, data, {
   ErrorMessage: ERROR_MESSAGE.PUT_ERROR,
@@ -27,3 +29,10 @@ export const PatchRequest = (url, data,header) => patchRequest(url, data, {
   ErrorMessage: ERROR_MESSAGE.POST_ERROR,
   SuccessMessage: SUCCESS_MESSAGE.POST_SUCCESS,
 });
+//-------------------------------------------------------------------------------------
+
+/*
+  Developer : Gauri
+ */
+
+export const GetAllEntitiesData = (url, header, type) =>getRequest1(url,type);

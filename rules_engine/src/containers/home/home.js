@@ -13,8 +13,9 @@
 
     import axios from 'axios';
     import { connect } from 'react-redux';
-import { postRequest } from "../../api/axiosUtility";
-// import store from './../../redux/store';  //importing data from store
+    import { postRequest } from "../../api/axiosUtility";
+
+
 
 
     const onSortFunction = {
@@ -239,32 +240,32 @@ import { postRequest } from "../../api/axiosUtility";
 
 //------------------------------------Functions for Attributes-------------------------------------------------
      
-      addEntity = () => {
-        // this.state.addattFlag = false;
-        // this.state.title='Add Entity';
-        // this.state.size='s';
-        // this.state.addWfFlag = false;
-        this.setState({
-          addattFlag:false,
-          title:"Add Entity",
-          size:"s",
-          addWfFlag:false
-        });
-         this.getInitialState(); 
-         this.setInitalWorkflowState();
-          this.toggle();
-      }
+      // addEntity = () => {
+      //   // this.state.addattFlag = false;
+      //   // this.state.title='Add Entity';
+      //   // this.state.size='s';
+      //   // this.state.addWfFlag = false;
+      //   this.setState({
+      //     addattFlag:false,
+      //     title:"Add Entity",
+      //     size:"s",
+      //     addWfFlag:false
+      //   });
+      //    this.getInitialState(); 
+      //    this.setInitalWorkflowState();
+      //     this.toggle();
+      // }
 
-      getInitialState = () => {
-          this.state.name = '';
-          this.state.isprivate = 'No';
-          this.state.dropdownOpen = false;
-          this.state.dropDownValue = '';
-          this.state.dropDownText = '';
-          this.state.entityId = '';
-          this.state.Tt = '';
-          this.state.workflow = '';
-      }
+      // getInitialState = () => {
+      //     this.state.name = '';
+      //     this.state.isprivate = 'No';
+      //     this.state.dropdownOpen = false;
+      //     this.state.dropDownValue = '';
+      //     this.state.dropDownText = '';
+      //     this.state.entityId = '';
+      //     this.state.Tt = '';
+      //     this.state.workflow = '';
+      // }
 
       toggle = () => {
         this.setState({
@@ -287,146 +288,146 @@ import { postRequest } from "../../api/axiosUtility";
         });
       }
 
-      submitForm = (e) => {
-        e.preventDefault();
-         var data = {
-          name: this.state.name,
-          availability: this.state.isprivate == 'Yes' ? true : false,
-          tenantId: this.state.isprivate == 'Yes' ? this.state.tenant : 0 
-        }
-         this.addEntityApi(data);
-        }
+      // submitForm = (e) => {
+      //   e.preventDefault();
+      //    var data = {
+      //     name: this.state.name,
+      //     availability: this.state.isprivate == 'Yes' ? true : false,
+      //     tenantId: this.state.isprivate == 'Yes' ? this.state.tenant : 0 
+      //   }
+      //    this.addEntityApi(data);
+      //   }
 
-        addEntityApi = (data) => {
-          this.setInitalWorkflowState();
-          if(this.state.entityId){    //EDIT
-            PutRequest(ADD_ENTITY+'/'+ this.state.entityId,data,header)
-            .then(response => {
-              if(response.status == '200'){
-                this.setState({successMsg : 'Record Updated Successfully'});
-                setTimeout(() => {
-                 this.setState({
-                   successMsg: ''
-                 });
-               }, 2000);
-               GetRequest(GET_ALL_ENTITIES,header)
-               .then(res => {
-                 this.setState({response:res.data})
-               }).catch(err=>{
-                 console.log(err)
-               })
-              }
-            }).catch(error=> {
-              console.log(error);
-                this.setState({errorMsg : "Failed to update the record"})
-                setTimeout(() => {
-                  this.setState({
-                    errorMsg: ''
-                  });
-                }, 2000);
-            })
-          }
-          else {       //ADD
-            PostRequest(ADD_ENTITY,data,header)
-            .then(response => {
-              if(response.status == '200'){
-               this.setState({successMsg : 'Record Added Successfully'});
-               setTimeout(() => {
-                this.setState({
-                  successMsg: ''
-                });
-              }, 2000);
+        // addEntityApi = (data) => {
+        //   this.setInitalWorkflowState();
+        //   if(this.state.entityId){    //EDIT
+        //     PutRequest(ADD_ENTITY+'/'+ this.state.entityId,data,header)
+        //     .then(response => {
+        //       if(response.status == '200'){
+        //         this.setState({successMsg : 'Record Updated Successfully'});
+        //         setTimeout(() => {
+        //          this.setState({
+        //            successMsg: ''
+        //          });
+        //        }, 2000);
+        //        GetRequest(GET_ALL_ENTITIES,header)
+        //        .then(res => {
+        //          this.setState({response:res.data})
+        //        }).catch(err=>{
+        //          console.log(err)
+        //        })
+        //       }
+        //     }).catch(error=> {
+        //       console.log(error);
+        //         this.setState({errorMsg : "Failed to update the record"})
+        //         setTimeout(() => {
+        //           this.setState({
+        //             errorMsg: ''
+        //           });
+        //         }, 2000);
+        //     })
+        //   }
+        //   else {       //ADD
+        //     PostRequest(ADD_ENTITY,data,header)
+        //     .then(response => {
+        //       if(response.status == '200'){
+        //        this.setState({successMsg : 'Record Added Successfully'});
+        //        setTimeout(() => {
+        //         this.setState({
+        //           successMsg: ''
+        //         });
+        //       }, 2000);
 
-              GetRequest(GET_ALL_ENTITIES,header)
-              .then(res => {
-                this.setState({response:res.data})
-              }).catch(err=>{
-                console.log(err)
-              })
+        //       GetRequest(GET_ALL_ENTITIES,header)
+        //       .then(res => {
+        //         this.setState({response:res.data})
+        //       }).catch(err=>{
+        //         console.log(err)
+        //       })
 
-              }
-            }).catch((error) => {
-                console.log(error);
-                this.setState({errorMsg : "Failed to add the record"})
-                setTimeout(() => {
-                  this.setState({
-                    errorMsg: ''
-                  });
-                }, 2000);
-              })
-            }
+        //       }
+        //     }).catch((error) => {
+        //         console.log(error);
+        //         this.setState({errorMsg : "Failed to add the record"})
+        //         setTimeout(() => {
+        //           this.setState({
+        //             errorMsg: ''
+        //           });
+        //         }, 2000);
+        //       })
+        //     }
              
-           this.getInitialState()
-           this.state.modal = false;
-          }
+        //    this.getInitialState()
+        //    this.state.modal = false;
+        //   }
 
-          editEntity = (rowId) => {
-            this.getInitialState();
-            this.state.addWfFlag = false
-            this.setState({title:'Edit Entity',size:'s',addattFlag : false})
-            GetRequest(GET_ALL_ENTITIES + '/'+ rowId,header)
-                      .then(response => {
-                        this.setState({
-                          id : response.data.id,
-                          name: response.data.name,
-                          isprivate : response.data.availability == false ? 'No' : 'Yes',
-                          dropdownOpen: false,
-                          tenant : response.data.tenantId,
-                          entityId : rowId
-                        });
-                      })
-                      .then(() => {
-                            if(this.state.tenant != 0){
-                             GetRequest(GET_TENANT_BY_ID + '/'+ this.state.tenant)
-                                .then((res) => {
-                                    this.setState({
-                                      dropDownText: res.data[0].name,
-                                    });
-                                })
-                                .catch(function (error) {
-                                  console.log(error);
-                                }); 
-                              }
-                            })
-                   this.toggle();
-          }
+          // editEntity = (rowId) => {
+          //   this.getInitialState();
+          //   this.state.addWfFlag = false
+          //   this.setState({title:'Edit Entity',size:'s',addattFlag : false})
+          //   GetRequest(GET_ALL_ENTITIES + '/'+ rowId,header)
+          //             .then(response => {
+          //               this.setState({
+          //                 id : response.data.id,
+          //                 name: response.data.name,
+          //                 isprivate : response.data.availability == false ? 'No' : 'Yes',
+          //                 dropdownOpen: false,
+          //                 tenant : response.data.tenantId,
+          //                 entityId : rowId
+          //               });
+          //             })
+          //             .then(() => {
+          //                   if(this.state.tenant != 0){
+          //                    GetRequest(GET_TENANT_BY_ID + '/'+ this.state.tenant)
+          //                       .then((res) => {
+          //                           this.setState({
+          //                             dropDownText: res.data[0].name,
+          //                           });
+          //                       })
+          //                       .catch(function (error) {
+          //                         console.log(error);
+          //                       }); 
+          //                     }
+          //                   })
+          //          this.toggle();
+          // }
 
-      deleteRow = (id) => {
-        let url = ADD_ENTITY+`/${id}`;
-        axios.delete(url)
-        .then(res => {
-          if(res.status == '204'){
-            GetRequest(GET_ALL_ENTITIES)
-              .then(response => {
-                this.setState({ response: response.data });
-              })
-              .catch((error) => {
-                console.log(error);
-              })
-            this.setState({successMsg : 'Record Deleted Successfully'});
-            setTimeout(() => {
-              this.setState({
-                successMsg: ''
-              });
-            }, 2000);
-            }
-        })
-        .catch((error) => {
-          console.log(error);
-          this.setState({errorMsg : 'Cannot delete entity. May be it has related accounts. Delete those accounts first'});
-          setTimeout(() => {
-            this.setState({
-              errorMsg: ''
-            });
-          }, 2000);
-        });
+      // deleteRow = (id) => {
+      //   let url = ADD_ENTITY+`/${id}`;
+      //   axios.delete(url)
+      //   .then(res => {
+      //     if(res.status == '204'){
+      //       GetRequest(GET_ALL_ENTITIES)
+      //         .then(response => {
+      //           this.setState({ response: response.data });
+      //         })
+      //         .catch((error) => {
+      //           console.log(error);
+      //         })
+      //       this.setState({successMsg : 'Record Deleted Successfully'});
+      //       setTimeout(() => {
+      //         this.setState({
+      //           successMsg: ''
+      //         });
+      //       }, 2000);
+      //       }
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //     this.setState({errorMsg : 'Cannot delete entity. May be it has related accounts. Delete those accounts first'});
+      //     setTimeout(() => {
+      //       this.setState({
+      //         errorMsg: ''
+      //       });
+      //     }, 2000);
+      //   });
 
-        this.getInitialState();
-      }
+      //   this.getInitialState();
+      // }
          
-      resetForm = () => {
-        this.setState({name:'',isprivate:'No',dropdownOpen:false,dropDownValue:'',dropDownText:''})
-      }
+      // resetForm = () => {
+      //   this.setState({name:'',isprivate:'No',dropdownOpen:false,dropDownValue:'',dropDownText:''})
+      // }
 
 //------------------------------------Functions for Attributes--------------------------------------------------
 
@@ -522,28 +523,28 @@ import { postRequest } from "../../api/axiosUtility";
                 });
               } 
               
-              handleChangeEntity = (event) => {
-                var entityId = event.target.value;
-                this.setState({
-                    fentity : event.target.value,
-                    dropDownTextentity: event.target.name == 'fentity' ? event.currentTarget.textContent : this.state.dropDownTextentity,
-                })
-                var url = ADD_ENTITY + `/${entityId}/attribute`;
-                axios.get(url)
-                .then(response => {
-                    var pkdata = []; var allAttData = [];
-                    response.data.attributes.map((items)=> {
-                        allAttData.push({name: items.name,id :items.id,length :items.length,type :items.type,pkFlag : items.pkFlag});
-                    if(items.pkFlag == true){
-                        pkdata.push({name: items.name,id :items.id,length :items.length,type :items.type,pkFlag : items.pkFlag});
-                        }
-                    });
-                  this.setState({ responsepks: pkdata,responseallAtt : allAttData });
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-              }
+              // handleChangeEntity = (event) => {
+              //   var entityId = event.target.value;
+              //   this.setState({
+              //       fentity : event.target.value,
+              //       dropDownTextentity: event.target.name == 'fentity' ? event.currentTarget.textContent : this.state.dropDownTextentity,
+              //   })
+              //   var url = ADD_ENTITY + `/${entityId}/attribute`;
+              //   axios.get(url)
+              //   .then(response => {
+              //       var pkdata = []; var allAttData = [];
+              //       response.data.attributes.map((items)=> {
+              //           allAttData.push({name: items.name,id :items.id,length :items.length,type :items.type,pkFlag : items.pkFlag});
+              //       if(items.pkFlag == true){
+              //           pkdata.push({name: items.name,id :items.id,length :items.length,type :items.type,pkFlag : items.pkFlag});
+              //           }
+              //       });
+              //     this.setState({ responsepks: pkdata,responseallAtt : allAttData });
+              //   })
+              //   .catch(function (error) {
+              //       console.log(error);
+              //   });
+              // }
 
             handleChangePk = (event) =>
             {
@@ -648,31 +649,31 @@ import { postRequest } from "../../api/axiosUtility";
               this.saveAttributes(attributeData);
             }
 
-            saveAttributes = (data) => {
-            PostRequest(ADD_ATTRIBUTE,data,header)
-                  .then(response => {
-                      if (response.status == '200') {
-                          this.setState({ successMsg: 'Record Added Successfully'});
-                          setTimeout(() => {
-                              this.setState({
-                                successMsg: ''
-                              });
-                            }, 2000);
-                          this.getEntityAttributes(this.state.entityId);
-                      }
+            // saveAttributes = (data) => {
+            // PostRequest(ADD_ATTRIBUTE,data,header)
+            //       .then(response => {
+            //           if (response.status == '200') {
+            //               this.setState({ successMsg: 'Record Added Successfully'});
+            //               setTimeout(() => {
+            //                   this.setState({
+            //                     successMsg: ''
+            //                   });
+            //                 }, 2000);
+            //               this.getEntityAttributes(this.state.entityId);
+            //           }
                       
-                  })
-                  .catch(err => {
-                    console.log(err.response.data);
-                      this.setState({ errorMsg: 'Record Not Added. '+ err.response.data });
-                      setTimeout(() => {
-                          this.setState({
-                              errorMsg: ''
-                          });
-                        }, 3000);
-                  })
-                  this.setInitialState();
-            }
+            //       })
+            //       .catch(err => {
+            //         console.log(err.response.data);
+            //           this.setState({ errorMsg: 'Record Not Added. '+ err.response.data });
+            //           setTimeout(() => {
+            //               this.setState({
+            //                   errorMsg: ''
+            //               });
+            //             }, 3000);
+            //       })
+            //       this.setInitialState();
+            // }
   
         deleteRowAttribute = (id) => {
           let url = ADD_ATTRIBUTE +  `/${id}`
@@ -735,30 +736,30 @@ import { postRequest } from "../../api/axiosUtility";
       })
   }
 
-  addWorkflows = (entityId) => {
-    this.state.addattFlag = false;
-    this.setState({entityId:entityId, title : 'Add Workflows',size:'xl', addWfFlag:true});
-      GetRequest(ENTITY_WORKFLOWS,header)
-        .then(res=>{
-         this.setState({entityWf : res.data})
-        })
+  // addWorkflows = (entityId) => {
+  //   this.state.addattFlag = false;
+  //   this.setState({entityId:entityId, title : 'Add Workflows',size:'xl', addWfFlag:true});
+  //     GetRequest(ENTITY_WORKFLOWS,header)
+  //       .then(res=>{
+  //        this.setState({entityWf : res.data})
+  //       })
 
-        GetRequest(WORKFLOWS,header)
-        .then(res=>{
-         this.setState({allWfs : res.data})
-        })
-    this.toggle();
-  }
+  //       GetRequest(WORKFLOWS,header)
+  //       .then(res=>{
+  //        this.setState({allWfs : res.data})
+  //       })
+  //   this.toggle();
+  // }
 
-    submitWorflow = (e) => {
-      e.preventDefault();
-        var data = {
-          "entityId": this.state.entityId,
-          "workflowId": this.state.workflow,
-          "transactionType": this.state.Tt
-        }
-        this.saveWorflow(data)
-    }
+    // submitWorflow = (e) => {
+    //   e.preventDefault();
+    //     var data = {
+    //       "entityId": this.state.entityId,
+    //       "workflowId": this.state.workflow,
+    //       "transactionType": this.state.Tt
+    //     }
+    //     this.saveWorflow(data)
+    // }
     saveWorflow = (data) => {
       postRequest(ENTITY_WORKFLOWS,data,header)
       .then(res=>{

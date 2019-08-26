@@ -1,5 +1,8 @@
 
+
 /*
+  Developer : Sarika
+*/
 const utilsReducers = (state = {
   isLoading: false,
   loaderStyles: null,
@@ -15,7 +18,6 @@ const utilsReducers = (state = {
   visibilityScope: [],
   userData:'',
   entityId:'',
-  allentitiesData : ['data'],
 }, action) => {
   
   const newState = Object.assign({}, state);
@@ -31,20 +33,8 @@ const utilsReducers = (state = {
       newState.entityId = action.payload.data;
       return newState;
 
-      case 'DISPLAY_ALL':
-        newState.allentitiesData = action.payload.data;
-        return newState;
-
     default: return state;
 
   }
 };
-*/
-
-import {combineReducers} from 'redux';
-import HomeReducer from "./homeReducer";
-
-
-const utilsReducers = combineReducers({HomeReducer});
-
 export default utilsReducers;

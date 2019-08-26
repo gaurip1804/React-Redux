@@ -1,6 +1,6 @@
 
 let newState = {};
-const HomeReducer = (state=[],action)=>{
+ const HomeReducer = (state=[],action)=>{
 
     switch (action.type) {
           case 'DISPLAY_ALL':
