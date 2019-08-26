@@ -1,0 +1,67 @@
+.mb20{
+    margin-bottom: 20px;
+}
+.link{
+    color: #501c7c;
+    &:hover{color: #9e0e84;}
+}
+#login{
+    .page-loader{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background-color: #a2a0a078;
+        svg {
+            stroke:#501c7c;
+            fill: #9e0e84;
+        }
+    }
+}
+#login{
+     .login-container{
+        position: relative;
+        background-color: #f8f6f8;
+        padding: 1%;
+        width: 30%;
+        margin:0 auto;
+        top:100px;
+        z-index:1;
+        .input-bottom-line{
+            border-bottom: 2px solid #501c7c ;
+            border-left:0px solid transparent;
+            border-right:0px solid transparent;
+            border-top:0px solid transparent;
+            border-radius: 0;
+            color:#000;
+            height:34px;
+            font-size: 14px;
+            &:focus{
+                border-bottom: 2px solid #9e0e84;
+            }
+         }
+         .input-label{
+             font-weight: 600;
+         }
+     }
+    .logo{
+        padding:10px;
+        width:25%;
+        text-align: center
+   }
+   .bg-img{
+        min-height: 100%; 
+        width: 100%; 
+        height: auto; 
+        position: fixed; 
+        top:90px; 
+        left: 0px;
+   }
+}
+@media screen and (max-width:'767px'){
+    #login{
+        .login-container{
+            width:98% !important;
+        }
+    }
+}

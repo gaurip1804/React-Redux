@@ -1,0 +1,25 @@
+.datatable-container{
+    padding:20px 0;
+        .table{
+            background: #fff;
+            .fa-pencil-square-o{
+                color:#501c7c
+            }
+        }
+        .btn.btn-default{
+            background-color: #501c7c;
+            border-color: #501c7c;
+            border-radius: 0;
+            color:#fff;
+            &:hover{
+                background-color: #9e0e84;
+                border-color: #9e0e84;
+            }
+        }
+        .btn-group-page-nav{
+            .btn.btn-default{
+                margin:5px;
+            }
+        }
+ 
+}

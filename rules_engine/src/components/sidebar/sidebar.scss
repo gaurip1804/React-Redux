@@ -1,0 +1,139 @@
+@import '../../assets/scss/colorCodes.scss';
+.sidebar {
+   a{
+       color:$text-color;
+       em{
+        font-style: normal;
+       }
+   }
+ }
+ 
+ .s-layout__content {
+   //  display: flex;
+   //  justify-content: center;
+   //  align-items: center;
+   //  flex: 1;
+   padding:20px 40px;
+ }
+ 
+ /* Sidebar */
+ .s-sidebar__trigger {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4em;
+    background: $ternary ;
+ }
+ 
+ .s-sidebar__trigger > i {
+    display: inline-block;
+    margin: 1.5em 0 0 1.5em;
+    color: $text-color;
+ }
+ 
+ .s-sidebar__nav {
+    position: absolute;
+    left: -17em;
+    overflow: hidden;
+    transition: all .3s ease-in;
+    width: 17em;
+    height: 100%;
+    background-image: linear-gradient(to right, $primary , $secondary);
+    // background: $primary ;
+    color: $text-color;
+ }
+ 
+ .s-sidebar__nav:hover,
+ .s-sidebar__nav:focus,
+ .s-sidebar__trigger:focus + .s-sidebar__nav,
+ .s-sidebar__trigger:hover + .s-sidebar__nav {
+    left: 0;
+ }
+ 
+ .s-sidebar__nav ul {
+    position: absolute;
+    top: 4em;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 17em;
+ }
+ 
+ .s-sidebar__nav ul li {
+    width: 100%;
+ }
+ 
+ .s-sidebar__nav-link {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 4em;
+ }
+ 
+ .s-sidebar__nav-link em {
+    position: absolute;
+    top: 50%;
+    left: 4em;
+    transform: translateY(-50%);
+ }
+ 
+ .s-sidebar__nav-link:hover, .s-sidebar__nav-link.active{
+    background: $text-color;
+    color: $primary;
+    border-right:4px solid $ternary;
+ }
+ 
+ .s-sidebar__nav-link > i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 65px;
+    height: 65px;
+    font-size: 20px;
+ }
+ 
+ .s-sidebar__nav-link > i::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ }
+ 
+ /* Mobile First */
+ @media (min-width: 42em) {
+    
+    /* Sidebar */
+    .s-sidebar__trigger {
+       width: 4em;
+    }
+    
+    .s-sidebar__nav {
+       width: 4em;
+       left: 0;
+    }
+    
+    .s-sidebar__nav:hover,
+    .s-sidebar__nav:focus,
+    .s-sidebar__trigger:hover + .s-sidebar__nav,
+    .s-sidebar__trigger:focus + .s-sidebar__nav {
+       width: 17em;
+    }
+ }
+ 
+ @media (min-width: 68em) {
+    /* Sidebar */
+    .s-sidebar__trigger {
+       display: none
+    }
+    
+    .s-sidebar__nav {
+       width: 17em;
+    }
+    
+    .s-sidebar__nav ul {
+       top: 1.3em;
+    }
+ }
+ 

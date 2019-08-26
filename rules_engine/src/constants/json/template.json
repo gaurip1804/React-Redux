@@ -1,0 +1,85 @@
+[
+    {
+        "templateId": "1",
+        "templateName":"Login",
+        "wrapperDiv":{
+        },
+        "selectors": [
+            {
+                "selector": "login-container",
+                "properties": {
+                    "position": "relative",
+                    "backgroundColor": "#f8f6f8",
+                    "padding": "1%",
+                    "width": "30%",
+                    "margin": "0 auto",
+                    "top": "100px",
+                    "zIndex":"1"
+                }
+            },
+            {
+                "selector": "bg-img",
+                "properties": {
+                    "minHeight": "100%",
+                   " minWidth": "1024px",
+                    "width": "100%",
+                    "height":" auto",
+                    "position": "fixed",
+                    "top": "0",
+                    "left": "0"
+                }
+            }
+        ]
+    },
+    {
+        "templateId": "2",
+        "templateName":"Home",
+        "wrapperDiv":[{
+            "width":"100%",
+            "height":"auto"
+        }],
+       
+        "selectors": [
+            {
+                "selector": "header",
+                "properties": {
+                    "background-color": "#01a1b9",
+                    "border-bottom":"1px solid #16737a",
+                    "width": "100%",
+                    "height": "45px",
+                    "position": "fixed",
+                    "left": "0",
+                    "right": "0",
+                    "top":"0"
+                }
+            },
+            {
+                "selector": "sidebar",
+                "properties": {
+                    "background-color": "#6fd9e8",
+                    "border-bottom":"1px solid #16737a",
+                    "width": "85px",
+                    "height": "100%",
+                    "position": "fixed",
+                    "left": "0",
+                    "right": "auto",
+                    "top":"45px"
+                }
+            },
+            {
+                "selector": "section",
+                "properties": {
+                    "background-color": "",
+                    "border-bottom":"",
+                    "width": "auto",
+                    "height": "400px",
+                    "position": "relative",
+                    "left": "0",
+                    "right": "0",
+                    "top":"45px",
+                    "margin":"0px 20px 20px 105px"
+                }
+            }
+        ]
+    }
+]
