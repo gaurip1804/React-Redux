@@ -7,8 +7,8 @@ let newState = {};
               newState.allentitiesData = action.payload;
             break;
         default: return newState;
-    
       }
+
       return newState;
 };
 

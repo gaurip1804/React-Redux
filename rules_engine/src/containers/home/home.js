@@ -13,9 +13,8 @@
 
     import axios from 'axios';
     import { connect } from 'react-redux';
-    import { postRequest } from "../../api/axiosUtility";
-
-
+import { postRequest } from "../../api/axiosUtility";
+// import store from './../../redux/store';  //importing data from store
 
 
     const onSortFunction = {
@@ -203,24 +202,24 @@
 
       componentDidMount() {
         const URL = GET_ALL_ENTITIES;
-        debugger;
+        
         this.props.GetAllEntitesAction(URL,header,"DISPLAY_ALL");
         
 
   
-        GetRequest(GET_ALL_TENANT_ENTITIES,header)
-        .then(tenants => {
-          this.setState({
-          tenants : tenants.data,
-          });
-        })
-          .catch(function (error) {
-              console.log(error);
-        });
+        // GetRequest(GET_ALL_TENANT_ENTITIES,header)
+        // .then(tenants => {
+        //   this.setState({
+        //   tenants : tenants.data,
+        //   });
+        // })
+        //   .catch(function (error) {
+        //       console.log(error);
+        // });
       }
 
       static getDerivedStateFromProps(nextProps, prevProps) {
-        // debugger;
+       //  debugger;
         // we cannot setState
         if (nextProps.allentitiesData != prevProps.allentitiesData) {
           return {
@@ -232,7 +231,7 @@
     }
 
     componentDidUpdate(prevProps) {
-      // debugger;
+    //   debugger;
         if (this.props.allentitiesData.allentitiesData != this.state.response) {
           this.setState({ response: this.props.allentitiesData.allentitiesData });
         }
@@ -513,15 +512,15 @@
                   });
               }
 
-              handleChangeType = (event) => {
-                this.state.lengthabled = false;
-                this.setState({
-                    dropDownText: event.target.name == 'type' ? event.currentTarget.textContent : this.state.dropDownText,
-                    type : event.target.value,
-                    lengthabled : (event.currentTarget.textContent == 'Boolean' || event.currentTarget.textContent == 'Text' || event.currentTarget.textContent == 'DateTime' || event.currentTarget.textContent == 'Star Rating' ) ? true : this.state.lengthabled,
-                    length : (event.currentTarget.textContent == 'Boolean' || event.currentTarget.textContent == 'Text' || event.currentTarget.textContent == 'DateTime') ? '' : (event.currentTarget.textContent == 'Star Rating' ? 1 : this.state.length),
-                });
-              } 
+              // handleChangeType = (event) => {
+              //   this.state.lengthabled = false;
+              //   this.setState({
+              //       dropDownText: event.target.name == 'type' ? event.currentTarget.textContent : this.state.dropDownText,
+              //       type : event.target.value,
+              //       lengthabled : (event.currentTarget.textContent == 'Boolean' || event.currentTarget.textContent == 'Text' || event.currentTarget.textContent == 'DateTime' || event.currentTarget.textContent == 'Star Rating' ) ? true : this.state.lengthabled,
+              //       length : (event.currentTarget.textContent == 'Boolean' || event.currentTarget.textContent == 'Text' || event.currentTarget.textContent == 'DateTime') ? '' : (event.currentTarget.textContent == 'Star Rating' ? 1 : this.state.length),
+              //   });
+              // } 
               
               // handleChangeEntity = (event) => {
               //   var entityId = event.target.value;
@@ -649,31 +648,31 @@
               this.saveAttributes(attributeData);
             }
 
-            // saveAttributes = (data) => {
-            // PostRequest(ADD_ATTRIBUTE,data,header)
-            //       .then(response => {
-            //           if (response.status == '200') {
-            //               this.setState({ successMsg: 'Record Added Successfully'});
-            //               setTimeout(() => {
-            //                   this.setState({
-            //                     successMsg: ''
-            //                   });
-            //                 }, 2000);
-            //               this.getEntityAttributes(this.state.entityId);
-            //           }
+            saveAttributes = (data) => {
+            PostRequest(ADD_ATTRIBUTE,data,header)
+                  .then(response => {
+                      if (response.status == '200') {
+                          this.setState({ successMsg: 'Record Added Successfully'});
+                          setTimeout(() => {
+                              this.setState({
+                                successMsg: ''
+                              });
+                            }, 2000);
+                          this.getEntityAttributes(this.state.entityId);
+                      }
                       
-            //       })
-            //       .catch(err => {
-            //         console.log(err.response.data);
-            //           this.setState({ errorMsg: 'Record Not Added. '+ err.response.data });
-            //           setTimeout(() => {
-            //               this.setState({
-            //                   errorMsg: ''
-            //               });
-            //             }, 3000);
-            //       })
-            //       this.setInitialState();
-            // }
+                  })
+                  .catch(err => {
+                    console.log(err.response.data);
+                      this.setState({ errorMsg: 'Record Not Added. '+ err.response.data });
+                      setTimeout(() => {
+                          this.setState({
+                              errorMsg: ''
+                          });
+                        }, 3000);
+                  })
+                  this.setInitialState();
+            }
   
         deleteRowAttribute = (id) => {
           let url = ADD_ATTRIBUTE +  `/${id}`
@@ -736,30 +735,30 @@
       })
   }
 
-  // addWorkflows = (entityId) => {
-  //   this.state.addattFlag = false;
-  //   this.setState({entityId:entityId, title : 'Add Workflows',size:'xl', addWfFlag:true});
-  //     GetRequest(ENTITY_WORKFLOWS,header)
-  //       .then(res=>{
-  //        this.setState({entityWf : res.data})
-  //       })
+  addWorkflows = (entityId) => {
+    this.state.addattFlag = false;
+    this.setState({entityId:entityId, title : 'Add Workflows',size:'xl', addWfFlag:true});
+      GetRequest(ENTITY_WORKFLOWS,header)
+        .then(res=>{
+         this.setState({entityWf : res.data})
+        })
 
-  //       GetRequest(WORKFLOWS,header)
-  //       .then(res=>{
-  //        this.setState({allWfs : res.data})
-  //       })
-  //   this.toggle();
-  // }
+        GetRequest(WORKFLOWS,header)
+        .then(res=>{
+         this.setState({allWfs : res.data})
+        })
+    this.toggle();
+  }
 
-    // submitWorflow = (e) => {
-    //   e.preventDefault();
-    //     var data = {
-    //       "entityId": this.state.entityId,
-    //       "workflowId": this.state.workflow,
-    //       "transactionType": this.state.Tt
-    //     }
-    //     this.saveWorflow(data)
-    // }
+    submitWorflow = (e) => {
+      e.preventDefault();
+        var data = {
+          "entityId": this.state.entityId,
+          "workflowId": this.state.workflow,
+          "transactionType": this.state.Tt
+        }
+        this.saveWorflow(data)
+    }
     saveWorflow = (data) => {
       postRequest(ENTITY_WORKFLOWS,data,header)
       .then(res=>{

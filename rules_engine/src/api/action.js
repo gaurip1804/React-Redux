@@ -2,11 +2,11 @@
   Developer : Gauri
 */
 
+import axios from "axios";
 
 export const getRequest1 = (url,type) =>{ 
     return axios.get(url)  
        .then(response => {
-                           
              return {
                type:type,
                payload:response.data

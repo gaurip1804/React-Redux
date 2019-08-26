@@ -6,7 +6,9 @@ import promiseMiddleware from "redux-promise";
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
-import utilsReducer from '../reducers/utilsReucers';
+//import utilsReducer from '../reducers/utilsReucers';
+import reducers from './../reducers/reducers'
+
 /*
 const middlewares = [thunk];
 if (process.env.NODE_ENV === 'development') {
@@ -22,7 +24,7 @@ if (process.env.NODE_ENV === 'development') {
   enhancers.push(window.devToolsExtension ? window.devToolsExtension() : f => f);
 }
 */
-const reducers = utilsReducer;
+
 const middleware = applyMiddleware(promiseMiddleware);
 
 

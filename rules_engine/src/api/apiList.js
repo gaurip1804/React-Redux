@@ -36,3 +36,5 @@ export const PatchRequest = (url, data,header) => patchRequest(url, data, {
  */
 
 export const GetAllEntitiesData = (url, header, type) =>getRequest1(url,type);
+
+export const GetEntityTenant = (url,header,type) => getRequest1(url,type)
