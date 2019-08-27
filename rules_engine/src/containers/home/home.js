@@ -9,10 +9,10 @@
     import {GET_ALL_ENTITIES,GET_ALL_TENANT_ENTITIES} from './../../constants/baseURL';
     
     // this is action 
-    import { GetRequest,GetAllEntitiesData, GetEntityTenant,PostRequest, PutRequest,DelelteRequest } from '../../api/apiList';
+    import {GetAllEntitiesData, GetEntityTenant } from '../../api/apiList';
     import axios from 'axios';
     import { connect } from 'react-redux';
-   import { postRequest } from "../../api/axiosUtility";
+   
 // import store from './../../redux/store';  //importing data from store
 
 
