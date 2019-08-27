@@ -6,7 +6,12 @@ let newState = {};
           case 'DISPLAY_ALL':
               newState.allentitiesData = action.payload;
             break;
-        default: return newState;
+
+            case 'DISPLAY_ALL_TENANTS':
+              newState.alltenants = action.payload;
+            break;
+
+        default: return state;
       }
 
       return newState;
